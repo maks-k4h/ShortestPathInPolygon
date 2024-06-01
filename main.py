@@ -124,11 +124,13 @@ def _min_dist(M: np.ndarray, v: int, memo: np.ndarray, memo_path: List[Tuple[int
         return 0, (1,)
     if memo[v] >= 0:
         return float(memo[v]), memo_path[v]
+    if memo[v] == -2:
+        return 1, None
     min_dist = np.inf
     min_path = None
+    memo[v] = -2  # currently checking
     for i, c in enumerate(M[v]):
         if c >= 1 and i != v and memo[i] != -2:
-            memo[i] = -2  # currently checking
             d, p = _min_dist(M, i, memo, memo_path)
             if p is None:
                 continue
