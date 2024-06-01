@@ -139,6 +139,7 @@ class PolygonApp:
 
         polygon = Polygon(np.asarray(self.vertices, dtype=np.float32))
         points = polygon_shortest_path(polygon, np.asarray(self.pt_start), np.asarray(self.pt_end))
+        self.vertices = polygon.points.tolist()
 
         def get_point(j):
             if j == 0:

@@ -16,8 +16,8 @@ class Polygon:
         rightmost_i = np.argmax(e[:, 1] + e[:, 0], axis=0)[0]
         edge = self.edges[rightmost_i]
 
-        print((edge[1] - edge[0])[1] < 0)
         if ((edge[1] - edge[0])[1] < 0) == clockwise:
+            print('Reorienting')
             self.points = self.points[::-1]
 
 
